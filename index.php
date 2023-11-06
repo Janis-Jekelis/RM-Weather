@@ -46,4 +46,5 @@ switch ($routeInfo[0]) {
         echo $twig->render($response->getViewName() . ".twig", $response->getData());
 
         break;
+        echo"";
 }
