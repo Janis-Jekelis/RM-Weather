@@ -1,10 +1,21 @@
 <?php
 declare(strict_types=1);
+
+use App\Models\Weather;
+use Carbon\Carbon;
 require_once "vendor/autoload.php";
 
 $loader = new \Twig\Loader\FilesystemLoader('Public/Views');
 $twig = new \Twig\Environment($loader);
-
+$weather = new Weather();
+$twig->addGlobal("global",[
+    "weather"=>[
+    "temp"=>round($weather->getTemp()),
+    "windSpeed"=>$weather->getWindSpeed(),
+        "description"=>$weather->getWeatherDescription(),
+                ],
+    "time"=>Carbon::now('Europe/London')->format('H:i')
+]);
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', "/search", ["App\Controllers\EpisodeController", "search"]);
     $r->addRoute('GET', "/", ["App\Controllers\SeasonController", "index"]);
@@ -46,5 +57,4 @@ switch ($routeInfo[0]) {
         echo $twig->render($response->getViewName() . ".twig", $response->getData());
 
         break;
-        echo"";
 }
