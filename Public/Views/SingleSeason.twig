@@ -9,7 +9,8 @@
 {% for episode in episodes %}
     <li>
         <button type="button"
-                style="background-color: #bfff00; width:400px; height: 40px;"
+                style="background-color: #6699CC; width:400px; height: 40px;
+                border-radius: 40%;"
                 onclick="window.location.href='episode/{{ episode.getCountInSeason() }}';">
             Episode: {{ episode.getName() }}
             {{ episode.getAirDate() }}

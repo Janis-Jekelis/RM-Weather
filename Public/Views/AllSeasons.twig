@@ -9,7 +9,13 @@
 <h1 style="text-align: center;"> Rick And Morty </h1>
 
 {% for id in seasonids %}
-    <li><button type="button" onclick="window.location.href='season/{{id}}';">Season {{id}}</button></li>
+    <li>
+        <button type="button"
+                style="background-color: transparent; width:400px; height: 40px;
+                 color: #00FFFF;
+                 font-size: 20px;"
+                onclick="window.location.href='season/{{ id }}';">Season {{ id }}</button>
+    </li>
 {% endfor %}
 
 
